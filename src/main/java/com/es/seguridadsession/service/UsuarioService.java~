@@ -20,6 +20,7 @@ public class UsuarioService {
     private SessionRepository sessionRepository;
 
     public String login(UsuarioDTO userLogin) {
+
         // Comprobar si user y pass son correctos -> obtener de la BDD el usuario
         String nombreUser = userLogin.getNombre();
         String passUser = userLogin.getPassword();
@@ -40,6 +41,11 @@ public class UsuarioService {
         Session s = new Session();
         s.setToken(token);
         s.setUsuario(u);
+//        s.setExpirationDate(
+//                LocalDateTime.of(
+//                        LocalDate.of(2024, 11, 20),
+//                        LocalTime.now()
+//                ));
         s.setExpirationDate(
                 LocalDateTime.now().plusDays(1)
         );
