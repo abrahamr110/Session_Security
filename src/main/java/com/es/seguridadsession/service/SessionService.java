@@ -3,13 +3,13 @@ package com.es.seguridadsession.service;
 import com.es.seguridadsession.model.Session;
 import com.es.seguridadsession.repository.SessionRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
 
 @Service
 public class SessionService {
-
     @Autowired
     private SessionRepository sessionRepository;
 
@@ -25,7 +25,9 @@ public class SessionService {
         LocalDateTime ahora = LocalDateTime.now();
         if(ahora.isAfter(s.getExpirationDate())) {
             // LANZO UNA EXCEPCION
-
+            return ResponseEntity
+                    .badRequest()
+                    .build().hasBody();
         }
 
         return true;

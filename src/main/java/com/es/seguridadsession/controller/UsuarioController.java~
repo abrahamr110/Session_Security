@@ -27,7 +27,6 @@ public class UsuarioController {
         // 1º Asegurarnos que userLogin no viene null
         if(userLogin == null || userLogin.getNombre() == null || userLogin.getPassword() == null) {
             // Lanzamos una excepcion
-            return ResponseEntity.badRequest().body(null);
         }
 
         // 2º Comprobar usuario y contraseña en el service y obtener token
